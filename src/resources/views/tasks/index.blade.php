@@ -39,7 +39,8 @@
               <th>タイトル</th>
               <th>状態</th>
               <th>期限</th>
-              <th></th>
+              <th>編集</th>
+              <th>削除</th>
             </tr>
             </thead>
             <tbody>
@@ -53,6 +54,11 @@
                 <td>
                   <a href="{{ route('tasks.edit', ['id' => $task->folder_id, 'task_id' => $task->id]) }}">
                     編集
+                  </a>
+                </td>
+                <td>
+                  <a href="{{ route('tasks.delete', ['id' => $task->folder_id, 'task_id' => $task->id]) }}">
+                    削除
                   </a>
                 </td>
               </tr>
