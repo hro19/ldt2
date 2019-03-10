@@ -22,6 +22,9 @@ class TaskController extends Controller
         // 選ばれたフォルダに紐づくタスクを取得する
         $tasks = $current_folder->tasks()->get();
 
+        // タスクを「未着手」「着手」「完了」の順番に並び替える。
+        $tasks = $tasks->sortBy('status');
+
         return view('tasks/index', [
             'folders' => $folders,
             'current_folder_id' => $current_folder->id,
