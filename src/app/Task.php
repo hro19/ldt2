@@ -59,4 +59,19 @@ class Task extends Model
         return Carbon::createFromFormat('Y-m-d', $this->attributes['due_date'])
             ->format('Y/m/d');
     }
+
+
+    /**
+     * 曜日
+     * @return string
+     */
+    public function getYoubiDueDateAttribute()
+    {
+        // ローカルを日本語設定にする
+        // setlocale(LC_ALL, 'ja_JP.UTF-8');
+        // return Carbon::parse($this->attributes['due_date'])->formatLocalized('%a');
+        return ["日","月","火","水","木","金","土"][Carbon::parse($this->attributes['due_date'])->dayOfWeek];
+
+    }
+
 }
