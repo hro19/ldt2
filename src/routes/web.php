@@ -8,6 +8,11 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/folders/create', 'FolderController@showCreateForm')->name('folders.create');
     Route::post('/folders/create', 'FolderController@create');
 
+    Route::get('/folders/{id}/edit', 'FolderController@showEditForm')->name('folders.edit');
+    Route::post('/folders/{id}/edit', 'FolderController@edit');
+
+    Route::get('/folders/{id}/delete', 'FolderController@delete')->name('folders.delete');
+
     Route::get('/folders/{id}/tasks/create', 'TaskController@showCreateForm')->name('tasks.create');
     Route::post('/folders/{id}/tasks/create', 'TaskController@create');
 

@@ -18,6 +18,14 @@
                   class="list-group-item {{ $current_folder_id === $folder->id ? 'active' : '' }}"
               >
                 {{ $folder->title }}
+              <a
+                  href="{{ route('folders.edit', ['id' => $folder->id]) }}"
+                  class="btn btn-secondary btn-sm"
+              >編集ボタン</a>
+              <a
+                  href="{{ route('folders.delete', ['id' => $folder->id]) }}"
+                  class="btn btn-secondary btn-sm"
+              >削除ボタン</a>
               </a>
             @endforeach
           </div>

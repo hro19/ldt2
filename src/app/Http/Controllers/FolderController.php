@@ -28,4 +28,46 @@ class FolderController extends Controller
             'id' => $folder->id,
         ]);
     }
+
+    public function showEditForm(int $id)
+    {
+        $folder = Folder::find($id);
+
+        return view('folders/edit', [
+            'folder' => $folder,
+        ]);
+    }
+
+    public function edit(int $id,Request $request)
+    {
+        $folder = Folder::find($id);
+        $req = $request->all();
+        unset($req['_token']);
+        //$folder->title = $request->title;
+        $folder->fill($req);
+        $folder->save();
+
+        return redirect()->route('tasks.index', [
+            'id' => $folder->id,
+        ]);
+    }
+
+
+    public function delete(int $id)
+    {
+        // 削除したいフォルダを見つける。
+        $folder = Folder::find($id);
+        // 削除する
+        $folder->delete();
+
+        // 所有しているフォルダの一番目を所得。
+        $first_folder = Folder::first();
+
+
+        return redirect()->route('tasks.index', [
+            'id' => $first_folder->id,
+        ]);
+    }
+
+
 }
