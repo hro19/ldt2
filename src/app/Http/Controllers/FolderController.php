@@ -29,18 +29,18 @@ class FolderController extends Controller
         ]);
     }
 
-    public function showEditForm(int $id)
+    public function showEditForm(Folder $folder)
     {
-        $folder = Folder::find($id);
+        $folder = Folder::find($folder->id);
 
         return view('folders/edit', [
             'folder' => $folder,
         ]);
     }
 
-    public function edit(int $id,Request $request)
+    public function edit(Folder $folder,Request $request)
     {
-        $folder = Folder::find($id);
+        $folder = Folder::find($folder->id);
         $req = $request->all();
         unset($req['_token']);
         //$folder->title = $request->title;
@@ -53,10 +53,10 @@ class FolderController extends Controller
     }
 
 
-    public function delete(int $id)
+    public function delete(Folder $folder)
     {
         // 削除したいフォルダを見つける。
-        $folder = Folder::find($id);
+        $folder = Folder::find($folder->id);
         // 削除する
         $folder->delete();
 
