@@ -34,10 +34,10 @@ return [
     'connections' => [
 
         // ★ test設定を追加
-        'mysql_testing' => [
-            'driver' => 'mysql',
-            'database' => ':memory:',
-            'prefix' => '',
+    'sqlite_testing' => [
+        'driver' => 'sqlite',
+        'database' => ':memory:',
+        'prefix' => '',
         ],
 
         'sqlite' => [
